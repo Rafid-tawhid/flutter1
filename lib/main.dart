@@ -22,20 +22,16 @@ class myApp extends StatelessWidget {
 
         ),
         body: Center(
-          child: RaisedButton(
+          child: MaterialButton(
             onPressed: (){},
-            textColor: Colors.white,
-            color: Colors.blue,
-            elevation: 10.0,
-            shape: Border.all(width: 2.0,color: Colors.black),
-            highlightElevation: 30,
-            highlightColor: Colors.deepOrange,
-            padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 5.0),
-            child: Text(
-              "Raised Button",
-              style: TextStyle(fontSize: 20.0),
-            ),
-
+            splashColor: Colors.blue,
+            height: 40,
+            minWidth: 200,
+            // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15) ),
+            shape: Border.all(color: Colors.green,width: 3),
+            child: Text("Material Button",style: TextStyle(fontSize: 20,color: Colors.red),),
+            color: Colors.white,
+            
           )
         ),
       ),
