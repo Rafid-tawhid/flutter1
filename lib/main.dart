@@ -24,32 +24,39 @@ class myApp extends StatelessWidget {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                "This is Text",
-                style: TextStyle(fontSize: 24),
-              ),
-              RaisedButton(
-                onPressed: () {},
+              Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  "Button",
-                  style: TextStyle(fontSize: 20),
+                  "This is a Simple Text",
+                  style: TextStyle(fontSize: 22),
                 ),
               ),
-              RaisedButton(
-                onPressed: () {},
-                child: Text(
-                  "Button2 ",
-                  style: TextStyle(fontSize: 20),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    RaisedButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Button",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    RaisedButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Button2",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              RaisedButton(
-                onPressed: () {},
-                child: Text(
-                  "Button3",
-                  style: TextStyle(fontSize: 20),
-                ),
+              Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: FlatButton(onPressed: () {}, child: Text("Love me")),
               )
             ],
           ),
