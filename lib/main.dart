@@ -4,62 +4,64 @@ void main() {
   runApp(myApp());
 }
 
-class myApp extends StatelessWidget {
+class myApp extends StatefulWidget {
   const myApp({Key? key}) : super(key: key);
 
   @override
+  _myAppState createState() => _myAppState();
+}
+
+class _myAppState extends State<myApp> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Sample app",
-      theme: ThemeData(
-        primarySwatch: Colors.red,
+      theme: ThemeData(primarySwatch: Colors.blue),
+      title: "Stateful Widget",
+      home: homePage(),
+    );
+  }
+}
+
+class homePage extends StatefulWidget {
+  const homePage({Key? key}) : super(key: key);
+
+  @override
+  _homePageState createState() => _homePageState();
+}
+
+class _homePageState extends State<homePage> {
+  int val=0;
+  void dataChange()
+  {
+    setState(() {
+      val+=1;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("App Bar"),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Sample App",
-            style: TextStyle(fontSize: 16.0),
-          ),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  "This is a Simple Text",
-                  style: TextStyle(fontSize: 22),
-                ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Text(
+                "Sample Stateful = $val",
+                style: TextStyle(fontSize: 22),
               ),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RaisedButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Button",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    RaisedButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Button2",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    )
-                  ],
-                ),
+            ),
+            RaisedButton(
+              onPressed: dataChange,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text("Click Me"),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 40),
-                child: FlatButton(onPressed: () {}, child: Text("Love me")),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
