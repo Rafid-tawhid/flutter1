@@ -16,21 +16,43 @@ class myApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Sample App",style: TextStyle(
-            fontSize: 16.0
-          ),),
-
+          title: Text(
+            "Sample App",
+            style: TextStyle(fontSize: 16.0),
+          ),
         ),
         body: Center(
-          child: IconButton(
-            onPressed: (){},
-            icon: Icon(
-              Icons.add_a_photo
-            ),
-            iconSize: 50.0,
-            splashColor: Colors.blue,
-            tooltip: "Add a Photo",
-          )
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "This is Text",
+                style: TextStyle(fontSize: 24),
+              ),
+              RaisedButton(
+                onPressed: () {},
+                child: Text(
+                  "Button",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              RaisedButton(
+                onPressed: () {},
+                child: Text(
+                  "Button2 ",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              RaisedButton(
+                onPressed: () {},
+                child: Text(
+                  "Button3",
+                  style: TextStyle(fontSize: 20),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
