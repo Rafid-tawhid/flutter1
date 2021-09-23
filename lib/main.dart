@@ -4,65 +4,72 @@ void main() {
   runApp(myApp());
 }
 
-class myApp extends StatefulWidget {
-  const myApp({Key? key}) : super(key: key);
-
-  @override
-  _myAppState createState() => _myAppState();
-}
-
-class _myAppState extends State<myApp> {
+class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Text Fields',
       theme: ThemeData(primarySwatch: Colors.blue),
-      title: "Stateful Widget",
-      home: homePage(),
+      home: MyHomePage(),
     );
   }
 }
 
-class homePage extends StatefulWidget {
-  const homePage({Key? key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  _homePageState createState() => _homePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _homePageState extends State<homePage> {
-  int val=0;
-  void dataChange()
+class _MyHomePageState extends State<MyHomePage> {
+  String myvar="Default";
+  String show="Default";
+  void showText()
   {
     setState(() {
-      val+=1;
+      show=myvar;
     });
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("App Bar"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Text(
-                "Sample Stateful = $val",
-                style: TextStyle(fontSize: 22),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Text("$show"),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: TextField(
+              onChanged: (text) {
+                myvar = text;
+              },
+              maxLength: 18,
+              decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.account_balance,
+                    color: Colors.blue,
+                  ),
+                  border: OutlineInputBorder(),
+                  labelText: 'Username',
+                  labelStyle: TextStyle(
+                    color: Colors.deepOrange,
+                    fontSize: 18,
+                  )),
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 18.0,
               ),
             ),
-            RaisedButton(
-              onPressed: dataChange,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Text("Click Me"),
-              ),
-            ),
-          ],
-        ),
+          ),
+          RaisedButton(onPressed: showText,
+          child: Text(
+            "Press ",
+          ),)
+        ],
       ),
     );
   }
